@@ -7,7 +7,7 @@ public class CompletelySored2DBS {
             {9,10,11,12},
             {13,14,15,16}
         };
-        System.out.println(Arrays);
+        System.out.println(Arrays.toString(search(arr,2)));
     }
     static int[] binarySearch(int[][] matrix , int row , int cStart , int cEnd , int target){
         while(cStart<=cEnd){
@@ -38,8 +38,38 @@ public class CompletelySored2DBS {
             int mid=rStart+(rEnd-rStart)/2;
             if(matrix[mid][cMid]==target){
                 return new int[]{mid,cMid};
+            }else if(matrix[mid][cMid]<target){
+                rStart=mid;
+            }else{
+                rEnd=mid;
             }
         }
+        //now we have two rows
+        //check whether the target is in the col of 2 rows
+        if(matrix[rStart][cMid]==target ){
+            return new int []{rStart , cMid};
+        }
+        if(matrix[rStart+1][cMid]==target){
+            return new int []{rStart+1, cMid};
+        }
+        //search in 1st half
+       if(matrix[rStart][cMid-1]>=target){
+           return binarySearch(matrix, rStart , 0 ,cMid-1 , target);
        
+       }
+
+       //search in 2nd half
+       if(matrix[rStart][cMid+1]<=target&&target<=matrix[rStart][cols-1]){
+           return binarySearch(matrix, rStart , cMid+1 , cols-1 , target);
+       }
+
+       //search in 3rd half
+       if(matrix[rStart+1][cMid-1]>=target){
+           return binarySearch(matrix, rStart+1 , 0 ,cMid-1 , target);
+       }else{
+           return binarySearch(matrix, rStart+1 , cMid+1 , cols-1 , target);
+       }
+       
+    
     }
 }
