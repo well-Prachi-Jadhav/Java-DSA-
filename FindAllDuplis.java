@@ -1,15 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Allmissing {
+public class FindAllDuplis {
     public static void main(String[] args) {
         int[] arr = {4,3,2,7,8,2,3,1};
-        List<Integer> missing = findDisappearedNumbers(arr);
+        List<Integer> missing = findDuplicates(arr);
         System.out.println(missing);
     }
-
-    static List<Integer> findDisappearedNumbers(int[] arr) {
+    static List<Integer> findDuplicates(int[] arr){ 
         int i=0;
         while(i<arr.length){
             int cor=arr[i];
@@ -22,13 +20,12 @@ public class Allmissing {
                 i++;
             } 
         }
-        ArrayList<Integer> missing = new ArrayList();
+        ArrayList<Integer> dups = new ArrayList();
         for(i=0;i<arr.length;i++){
             if(arr[i]!=i+1){
-                missing.add(i+1);
+                dups.add(arr[i]);
             }
         }
-        return missing;
+        return dups;
     }
 }
-    
