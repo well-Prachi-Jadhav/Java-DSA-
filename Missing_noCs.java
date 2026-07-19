@@ -5,7 +5,7 @@ public class Missing_noCs {
     }
 
     static int findMissing(int[] arr) {
-        int i = 0;
+        int i=0;
 
         while (i < arr.length) {
 
@@ -35,3 +35,4 @@ public class Missing_noCs {
         return arr.length;
     }
 }
+    
